@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
 // import ApiInfo from "./components/ApiInfo";
 import Homepage from "./components/Homepage";
@@ -11,14 +10,14 @@ export default function App() {
   useEffect(() => {
     fetch("https://swapi.dev/api/people/")
       .then((res) => res.json())
-      .then((json) => console.log(json));
+      .then((json) => setStarWarsData(json));
   }, []);
 
   return (
     <>
       <Homepage />
       <SearchBar />
-      <Table />
+      <Table starWarsData={starWarsData} />
 
       {/* <ApiInfo /> */}
     </>

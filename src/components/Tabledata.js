@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-export default function Tabledata() {
+export default function Tabledata({ starWarsData }) {
   return (
     <>
       <Table striped bordered hover className="project--table">
@@ -15,14 +15,6 @@ export default function Tabledata() {
             <th>Species</th>
           </tr>
         </thead>
-        {/* <tr>
-          <td>setStarWarsData('Name')</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr> */}
       </Table>
     </>
   );
