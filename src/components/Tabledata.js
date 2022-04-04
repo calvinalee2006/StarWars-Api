@@ -15,6 +15,16 @@ export default function Tabledata({ starWarsData }) {
             <th>Species</th>
           </tr>
         </thead>
+        <tbody>
+          <tr>
+            <td>{starWarsData.name}</td>
+            <td>{starWarsData.birth_year}</td>
+            <td>{starWarsData.height}</td>
+            <td>{starWarsData.weight}</td>
+            <td>{starWarsData.homeworld}</td>
+            <td>{starWarsData.species}</td>
+          </tr>
+        </tbody>
       </Table>
     </>
   );
