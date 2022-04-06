@@ -5,6 +5,7 @@ import Tabledata from "./components/Tabledata";
 
 export default function App() {
   const [characterList, setCharacterList] = useState([]);
+  const [homeWorld, setHomeWorld] = useState([]);
 
   useEffect(() => {
     fetch("https://swapi.dev/api/people/")
@@ -12,11 +13,17 @@ export default function App() {
       .then((json) => setCharacterList(json.results));
   }, []);
 
+  useEffect(() => {
+    fetch("https://swapi.dev/api/planets/")
+      .then((res) => res.json())
+      .then((json) => setHomeWorld(json.results));
+  }, []);
+
   return (
     <>
       <Homepage />
       <SearchBar />
-      <Tabledata characterList={characterList} />
+      <Tabledata characterList={characterList} homeWorld={homeWorld} />
     </>
   );
 }
