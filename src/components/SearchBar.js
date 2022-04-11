@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function SearchBar() {
+  const [searchTerm, setSearchTerm] = useState([]);
+
+  // `https://swapi.dev/api/people/?search=${searchTerm}`;
+
   return (
-    <div className="search">
-      <div className="searchInputs">
-        <input type="text" />
-        <div className="searchIcon"></div>
-      </div>
-      <div className="dataResult"></div>
-    </div>
+    <form action="/" method="get">
+      <label htmlFor="header-search">
+        <span className="visually-hidden">Search characters</span>
+      </label>
+      <input type="text" id="header-search" placeholder="Search Characters" />
+      <button type="submit">Search</button>
+    </form>
   );
 }
