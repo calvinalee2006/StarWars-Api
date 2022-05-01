@@ -1,35 +1,23 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import axios from "axios";
+import React, { useState } from "react";
 
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
+export default function SearchBar() {
+  const [characterName, setCharacterName] = useState("");
 
-    this.state = {
-      query: "", //Store user query results
-      results: {}, // grabbing the results from the api
-      loading: false, //Shows loading message when loading pictures.
-      message: "", //Just in case search fails.
-    };
+  function handleChange(e) {
+    this.setState({ [e.target.name]: e.target.value });
   }
-  // `https://swapi.dev/api/people/?search=${searchTerm}`;
-  render() {
-    return (
-      <>
-        <div className="container">
-          <label className="search-label" htmlFor="search-input">
-            <input
-              type="text"
-              value=""
-              id="search-input"
-              placeholder="Search your character"
-            />
-            <i class="fa fa-search" aria-hidden="true" />
-          </label>
-        </div>
-      </>
-    );
-  }
+  return (
+    <>
+      <form className="characterForm">
+        <label htmlFor="characterSearch">Character Search</label>
+        <input
+          type="text"
+          name=" characterName"
+          id="name"
+          onChange={this.handleChange}
+        />
+      </form>
+    </>
+  );
 }
-
-export default SearchBar;
