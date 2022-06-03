@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
-import Homepage from "./components/Homepage";
+import axios from "axios";
 import SearchBar from "./components/SearchBar";
 import Tabledata from "./components/Tabledata";
-import axios from "axios";
+
 
 export default function App() {
   const [characterList, setCharacterList] = useState([]);
+  const [characterName, setCharacterName] = useState("");
+
+  function handleChange(e) {
+    setCharacterName();
+  }
 
   useEffect(() => {
     getCharacters("https://swapi.dev/api/people/");
@@ -26,6 +31,7 @@ export default function App() {
         })
       );
       characters.then((characters) => {
+        console.log(characters);
         setCharacterList(characters);
       });
     });
@@ -44,8 +50,16 @@ export default function App() {
 
   return (
     <>
-      <Homepage />
-      <SearchBar />
+      <form className="characterForm">
+        <label htmlFor="characterSearch">Character Search</label>
+        <input
+          type="text"
+          name=" characterName"
+          id="name"
+          value={characterName}
+          onChange={handleChange}
+        />
+      </form>
       <Tabledata characterList={characterList} />
     </>
   );
